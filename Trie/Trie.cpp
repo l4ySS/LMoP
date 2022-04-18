@@ -39,7 +39,8 @@ Trie::Trie()
 
 Trie::~Trie()
 {
-	
+	clear();
+	delete root;
 }
 
 void Trie::insert(string word) {
@@ -80,22 +81,20 @@ bool Trie::remove(string word)
 }
 
 void Trie::deleteAll(Node*& node) {
-	for (int i = 0; i < ALPHABET_SIZE; i++) {
-		if (node->symbols[i] != nullptr) {
-			deleteAll(node->symbols[i]);
+	if (node != nullptr) {
+		for (int i = 0; i < ALPHABET_SIZE; i++) {
+				deleteAll(node->symbols[i]);
 		}
+		delete node;
+		node = nullptr;
 	}
-	delete node;
-	node = nullptr;
 }
 
 
 void Trie::clear()
 {
 	for (int i = 0; i < ALPHABET_SIZE; i++) {
-		if (root->symbols[i] != nullptr) {
 			deleteAll(root->symbols[i]);
-		}
 	}
 
 }
@@ -124,9 +123,9 @@ void Trie::print()
 
 
 
-void Trie::removeRec(Node*& node, string word, int h, string curr) {
+void Trie::removeRec(Node*& node, string word, int h, string currentString) {
 	if (node != nullptr) {
-		curr += node->c;
+		currentString += node->c;
 
 		if ((word[h] == node->c)) {
 			h++;
@@ -138,13 +137,13 @@ void Trie::removeRec(Node*& node, string word, int h, string curr) {
 		if (h == word.size()) {
 			if (node->eow) {
 				if (!hasChilds(node)) node = nullptr;
-				remove(curr);
+				remove(currentString);
 			}
 		}
 
 		if (node != nullptr) {
 			for (int i = 0; i < ALPHABET_SIZE; i++) {
-				removeRec(node->symbols[i], word, h, curr);
+				removeRec(node->symbols[i], word, h, currentString);
 			}
 		}
 	}
@@ -156,7 +155,6 @@ void Trie::removeRec(Node*& node, string word, int h, string curr) {
 void Trie::removeSubString(string str)
 {
 	for (int i = 0; i < ALPHABET_SIZE; i++) {
-		if (root->symbols[i] != nullptr)
 			removeRec(root->symbols[i], str, 0, "");
 	}
 }
