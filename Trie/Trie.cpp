@@ -82,12 +82,12 @@ bool Trie::remove(string word)
 
 void Trie::deleteAll(Node*& node) {
 	if (node != nullptr) {
-		for (int i = 0; i < ALPHABET_SIZE; i++) {
-				deleteAll(node->symbols[i]);
+	for (int i = 0; i < ALPHABET_SIZE; i++) {
+			deleteAll(node->symbols[i]);
 		}
-		delete node;
-		node = nullptr;
-	}
+	delete node;
+	node = nullptr;
+}
 }
 
 
@@ -95,7 +95,7 @@ void Trie::clear()
 {
 	for (int i = 0; i < ALPHABET_SIZE; i++) {
 			deleteAll(root->symbols[i]);
-	}
+		}
 
 }
 
