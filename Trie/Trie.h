@@ -38,7 +38,7 @@ private:
     Node* root;
 
     bool remove(Node*& node, string word, int h);
-    void removeRec(Node*& node, string sub_string, int h, string curr);
+    void removeRecursive(Node*& node, string sub_string, int h, string curr);
     bool hasChilds(Node* node);
     void deleteAll(Node*& curNode);
 public:

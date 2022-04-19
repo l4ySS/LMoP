@@ -10,13 +10,17 @@ using std::endl;
 int main() {
     Trie* trie = new Trie();
 
+    cout << "\t\tTrie Tree\n" << '\n';
 
     cout << "1  -  Insert word\n" << '\n';
+
     cout << "2  -  Remove word" << '\n';
     cout << "3  -  Remove SubString" << '\n';
     cout << "4  -  Find word" << '\n';
     cout << "5  -  Print\n" << '\n';
+
     cout << "6  -  Clear\n" << '\n';
+
     cout << "7  -  Test words" << '\n';
     cout << "8  -  Test substring\n" << '\n';
 

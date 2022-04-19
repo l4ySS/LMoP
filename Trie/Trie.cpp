@@ -123,7 +123,7 @@ void Trie::print()
 
 
 
-void Trie::removeRec(Node*& node, string word, int h, string currentString) {
+void Trie::removeRecursive(Node*& node, string word, int h, string currentString) {
 	if (node != nullptr) {
 		currentString += node->c;
 
@@ -143,7 +143,7 @@ void Trie::removeRec(Node*& node, string word, int h, string currentString) {
 
 		if (node != nullptr) {
 			for (int i = 0; i < ALPHABET_SIZE; i++) {
-				removeRec(node->symbols[i], word, h, currentString);
+				removeRecursive(node->symbols[i], word, h, currentString);
 			}
 		}
 	}
@@ -155,7 +155,7 @@ void Trie::removeRec(Node*& node, string word, int h, string currentString) {
 void Trie::removeSubString(string str)
 {
 	for (int i = 0; i < ALPHABET_SIZE; i++) {
-			removeRec(root->symbols[i], str, 0, "");
+			removeRecursive(root->symbols[i], str, 0, "");
 	}
 }
 

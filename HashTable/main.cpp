@@ -98,7 +98,7 @@ void main() {
     QuadraticProbingTable Table(64, &hash1);
     //QuadraticProbingTable Table(64, &hash3);
     //QuadraticProbingTable Table(64, &hash3);
-
+    cout << "\t\tHash Table\n" << '\n';
 
     cout << "1  -  Input from file" << '\n';
     cout << "2  -  Input from console\n" << '\n';
