@@ -5,7 +5,7 @@
 #include "iostream"
 
 
-QuadraticProbingTable::QuadraticProbingTable(int tableSize, FunctionType NewHashFunction) {
+QuadraticProbingTable::QuadraticProbingTable(int tableSize, TFunction NewHashFunction) {
 	this->HashFunction = NewHashFunction;
 	this->capacity = tableSize;
 	this->size = 0;
