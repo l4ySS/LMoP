@@ -2,7 +2,7 @@
 #include <vector>
 #include "Graph.h"
 
-#pragma once
+
 
 using std::vector;
 

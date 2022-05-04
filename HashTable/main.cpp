@@ -100,19 +100,23 @@ void main() {
     //QuadraticProbingTable Table(64, &hash3);
     cout << "\t\tHash Table\n" << '\n';
 
-    cout << "1  -  Input from file" << '\n';
-    cout << "2  -  Input from console\n" << '\n';
+    cout << "1   -   Input from file" << '\n';
+    cout << "2   -   Input from console\n" << '\n';
 
-    cout << "3  -  Remove key" << '\n';
-    cout << "4  -  Find key" << '\n';
-    cout << "5  -  Print key\n" << '\n';
+    cout << "11  -   Choose hash1\n" << '\n';
+    cout << "12  -   Choose hash2\n" << '\n';
+    cout << "13  -   Choose hash3\n" << '\n';
 
-    cout << "6  -  Print Table" << '\n';
-    cout << "7  -  Print collisions count" << '\n';
-    cout << "8  -  Clear Table" << '\n';
-    cout << "9  -  Test\n" << '\n';
+    cout << "3   -   Remove key" << '\n';
+    cout << "4   -   Find key" << '\n';
+    cout << "5   -   Print key\n" << '\n';
 
-    cout << "0  -  Exit" << '\n';
+    cout << "6   -   Print Table" << '\n';
+    cout << "7   -   Print collisions count" << '\n';
+    cout << "8   -   Clear Table" << '\n';
+    cout << "9   -   Test\n" << '\n';
+
+    cout << "0   -   Exit" << '\n';
 
 
     cout << "Enter command: ";
@@ -120,6 +124,27 @@ void main() {
     std::cin >> command;
     while (command != 0) {
         switch (command) {
+        case 11:
+        {
+            Table.changeHash(hash1);
+            cout << "Function has been changed.\n";
+        }
+        break;
+
+        case 12:
+        {
+            Table.changeHash(hash2);
+            cout << "Function has been changed.\n";
+        }
+        break;
+
+        case 13:
+        {
+            Table.changeHash(hash3);
+            cout << "Function has been changed.\n";
+        }
+        break;
+
         case 1:
         {
             inputText(Table, filename);

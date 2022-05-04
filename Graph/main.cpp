@@ -2,6 +2,8 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+
+#include "PriorityQueue.h"
 #include <string>
 #include "Graph.h"
 
@@ -36,6 +38,15 @@ int countConnectedComponents(Graph* g) {
     return countComponents;
 }
 
+
+
+
+
+
+
+
+
+
 int main() {
     /*int size, currentVertex, countEdges; 
     cin >> size >> currentVertex >> countEdges;
@@ -51,15 +62,17 @@ int main() {
     cout << countConnectedComponents(g);*/
 
 
-    Graph* g = new AdjacentMatrixGraph(5);
-    g->insert(0, 1);
-    g->insert(1, 2);
-    g->insert(0, 2);
-    g->insert(3, 4);
-    cout << countConnectedComponents(g);
-
+    //Graph* g = new AdjacentMatrixGraph(5);
+    //g->insert(0, 1);
+    //g->insert(1, 2);
+    //g->insert(0, 2);
+    //g->insert(3, 4);
+    //cout << countConnectedComponents(g) - 1 << "\n";
+   
 
     return 0;
+
+
 }
 
 

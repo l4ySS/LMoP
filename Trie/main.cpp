@@ -1,11 +1,16 @@
 #include <string>;
 #include <iostream>
+#include "fstream"
 #include "Trie.h"
 
-using std::string;
-using std::cout;
-using std::cin;
-using std::endl;
+
+using namespace std;
+
+
+
+
+
+
 
 int main() {
     Trie* trie = new Trie();
@@ -22,7 +27,7 @@ int main() {
     cout << "6  -  Clear\n" << '\n';
 
     cout << "7  -  Test words" << '\n';
-    cout << "8  -  Test substring\n" << '\n';
+    cout << "8  -  Test substring 'am'\n" << '\n';
 
     cout << "0  -  Exit" << '\n';
 
@@ -84,14 +89,15 @@ int main() {
         {
             trie->insert("programming");
             trie->insert("amm");
-            trie->insert("amb");
-            trie->insert("ammm");
+            trie->insert("world");
+            trie->insert("hello");
             trie->insert("am");
             trie->insert("dpmas");
             trie->insert("b");
             trie->insert("p");
-            trie->insert("dcfam");
+            trie->insert("param");
             trie->insert("dpmams");
+            trie->insert("paramram");
             cout << "Test\n";
         }
         break;
@@ -103,6 +109,20 @@ int main() {
         }
         break;
 
+        case 99:
+        {
+            trie->inputFromFile("input.txt");
+            cout << "\n";
+        }
+        break;
+
+        case 90:
+        {
+            trie->printInFile("output.txt");
+            cout << "\n";
+        }
+        break;
+
         default:
             std::cout << "Wrong number\n";
             break;
@@ -110,7 +130,8 @@ int main() {
         }
 
         cout << "\nEnter command: ";
-        std::cin >> command;
+std::cin >> command;
+
     }
 
     return 0;

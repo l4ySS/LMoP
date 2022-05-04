@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-
+#include "fstream"
 #pragma once
 
 using std::string;
@@ -38,9 +38,10 @@ private:
     Node* root;
 
     bool remove(Node*& node, string word, int h);
-    void removeRecursive(Node*& node, string sub_string, int h, string curr);
+    void removeRecursive(Node*& node, string sub_string, int h, string curr, bool &found);
     bool hasChilds(Node* node);
     void deleteAll(Node*& curNode);
+    void printInFileRecursive(Node* node, string word, int h, std::fstream& output);
 public:
     Trie();
     ~Trie();
@@ -50,5 +51,7 @@ public:
     void clear();
     void print();
     void removeSubString(string s);
+    void printInFile(string Filename);
+    void inputFromFile(string filename);
 
 };

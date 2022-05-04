@@ -20,6 +20,7 @@ public:
 
 	virtual void print() = 0;
 
+
 protected:
-	//virtual int hash(TKey key) = 0;
+//	virtual int hash(TKey key) = 0;
 };

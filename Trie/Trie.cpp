@@ -101,7 +101,6 @@ void Trie::clear()
 
 void printRecursive(Node* node, string word, int h) {
 	if (node != nullptr) {
-
 		if (node->eow) {
 			cout << word + node->c << endl;
 		}
@@ -123,9 +122,10 @@ void Trie::print()
 
 
 
-void Trie::removeRecursive(Node*& node, string word, int h, string currentString) {
+
+void Trie::removeRecursive(Node*& node, string word, int h, string currentString, bool &found) {
 	if (node != nullptr) {
-		currentString += node->c;
+		currentString += node->c;        
 
 		if ((word[h] == node->c)) {
 			h++;
@@ -134,33 +134,98 @@ void Trie::removeRecursive(Node*& node, string word, int h, string currentString
 			if (h != word.size()) h = 0;
 		};
 
-		if (h == word.size()) {
-			if (node->eow) {
-				if (!hasChilds(node)) node = nullptr;
-				remove(currentString);
-			}
+		if (h == word.size()) found = true;	
+
+		for (int i = 0; i < ALPHABET_SIZE; i++) {
+			removeRecursive(node->symbols[i], word, h, currentString, found);
 		}
 
-		if (node != nullptr) {
-			for (int i = 0; i < ALPHABET_SIZE; i++) {
-				removeRecursive(node->symbols[i], word, h, currentString);
+		if ((node->eow) && (currentString.find(word) == string::npos)) found = false;
+
+		if (found) {
+			if (node->eow) {
+				node->eow = false;
+			}
+			if (hasChilds(node) == false) {
+				delete node;
+				node = nullptr;
 			}
 		}
 	}
-
 }
-
 
 
 void Trie::removeSubString(string str)
 {
+
 	for (int i = 0; i < ALPHABET_SIZE; i++) {
-			removeRecursive(root->symbols[i], str, 0, "");
+		bool found = false;
+		removeRecursive(root->symbols[i], str, 0, "", found);
+
 	}
 }
 
 
 
+void Trie::printInFileRecursive(Node* node, string word, int h, std::fstream& output) {
+	if (node != nullptr) {
+
+		if (node->eow) {
+			output << word + node->c << endl;
+		}
+
+		for (int i = 0; i < ALPHABET_SIZE; i++) {
+			printInFileRecursive(node->symbols[i], word + node->c, h + 1, output);
+		}
+
+	}
+}
+
+
+void Trie::printInFile(std::string filename) {
+	std::fstream fout(filename);
+
+
+	for (int i = 0; i < ALPHABET_SIZE; i++) {
+		printInFileRecursive(root->symbols[i], "", 1, fout);
+	}
+};
+
+
+
+void Trie::inputFromFile(string filename) {
+	std::ifstream fin(filename);
+
+	string temp, word;
+
+	while (!fin.eof()) {
+
+		getline(fin, temp);
+		size_t index = 0;
+		while (temp[index] != '\0')
+		{
+			if (!(ispunct((temp[index])) || isspace(temp[index])))
+			{
+				word += temp[index];
+			}
+			else
+			{
+				if (word.length() > 0)
+				{
+					insert(word);
+					word = "";
+				}
+			}
+			index++;
+		}
+		insert(word);
+		word = "";
+		temp = "";
+		cout << "word = " << word << "\n";
+	}
+
+	fin.close();
+}
 
 
 

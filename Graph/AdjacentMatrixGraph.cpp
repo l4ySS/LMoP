@@ -1,4 +1,5 @@
 #include "AdjacentMatrixGraph.h"
+#include <string>
 
 AdjacentMatrixGraph::AdjacentMatrixGraph(int v_count)
 {
@@ -67,7 +68,7 @@ int AdjacentMatrixGraph::edges_count()
 vector<int> AdjacentMatrixGraph::adjacent_vertex(int v)
 {
     if (v > v_count) {
-        // throw new exception
+        throw std::string("Error");
         return vector<int>();
     }
 

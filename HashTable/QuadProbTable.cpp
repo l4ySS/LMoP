@@ -131,7 +131,7 @@ bool QuadraticProbingTable::find(TKey key)
 
 TValue QuadraticProbingTable::get(TKey key)
 {
-	int index = abs(HashFunction(key)) % capacity;;
+	int index = abs(HashFunction(key)) % capacity;
 	int iteration = 0;
 	int k = 1;
 
@@ -207,3 +207,6 @@ int QuadraticProbingTable::CountColissions() {
 	return count;
 };
 
+void  QuadraticProbingTable::changeHash(TFunction NewHashFunction) {
+	this->HashFunction = NewHashFunction;
+};

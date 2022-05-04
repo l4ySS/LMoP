@@ -26,6 +26,7 @@ public:
 	QuadraticProbingTable(int tableSize, TFunction NewHashFunction);
 	QuadraticProbingTable(const QuadraticProbingTable& table);
 
+	void changeHash(TFunction NewHashFunction);
 
 	void insert(TValue value);
 
