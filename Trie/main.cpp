@@ -98,6 +98,7 @@ int main() {
             trie->insert("param");
             trie->insert("dpmams");
             trie->insert("paramram");
+            trie->insert("paramrama");
             cout << "Test\n";
         }
         break;

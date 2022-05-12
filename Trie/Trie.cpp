@@ -2,13 +2,15 @@
 
 
 bool Trie::hasChilds(Node* node) {
-	bool hasChilds = false;
-	int i = 0;
-	while (!hasChilds && i < ALPHABET_SIZE) {
-		hasChilds = node->symbols[i] != nullptr;
-		i++;
+	if (node != nullptr) {
+		bool HasChilds = false;
+		int i = 0;
+		while (!HasChilds && i < ALPHABET_SIZE) {
+			HasChilds = node->symbols[i] != nullptr;
+			i++;
+		}
+		return HasChilds;
 	}
-	return hasChilds;
 }
 
 bool Trie::remove(Node*& node, string word, int h)
@@ -123,7 +125,7 @@ void Trie::print()
 
 
 
-void Trie::removeRecursive(Node*& node, string word, int h, string currentString, bool &found) {
+void Trie::removeRecursive(Node*& node, string word, int h, string currentString, bool found) {
 	if (node != nullptr) {
 		currentString += node->c;        
 
@@ -134,13 +136,17 @@ void Trie::removeRecursive(Node*& node, string word, int h, string currentString
 			if (h != word.size()) h = 0;
 		};
 
+
 		if (h == word.size()) found = true;	
+
 
 		for (int i = 0; i < ALPHABET_SIZE; i++) {
 			removeRecursive(node->symbols[i], word, h, currentString, found);
 		}
 
-		if ((node->eow) && (currentString.find(word) == string::npos)) found = false;
+
+		//if ((node->eow) && (currentString.find(word) == string::npos)) found = false;
+
 
 		if (found) {
 			if (node->eow) {
@@ -151,17 +157,21 @@ void Trie::removeRecursive(Node*& node, string word, int h, string currentString
 				node = nullptr;
 			}
 		}
+
+		if ((node!= nullptr) && (!node->eow) && (hasChilds(node) == false)) {
+			delete node;
+			node = nullptr;
+		}
 	}
 }
 
 
 void Trie::removeSubString(string str)
 {
-
 	for (int i = 0; i < ALPHABET_SIZE; i++) {
 		bool found = false;
 		removeRecursive(root->symbols[i], str, 0, "", found);
-
+		
 	}
 }
 

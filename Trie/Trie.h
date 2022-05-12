@@ -38,7 +38,7 @@ private:
     Node* root;
 
     bool remove(Node*& node, string word, int h);
-    void removeRecursive(Node*& node, string sub_string, int h, string curr, bool &found);
+    void removeRecursive(Node*& node, string sub_string, int h, string curr, bool found);
     bool hasChilds(Node* node);
     void deleteAll(Node*& curNode);
     void printInFileRecursive(Node* node, string word, int h, std::fstream& output);
