@@ -32,6 +32,8 @@ void backtracking(int first, int second, int third, int mark[], int M, int j, in
             int _i = i;
              if  (third + second - mark[_i] >= 0 )backtracking(first, mark[_i], third + second - mark[_i], mark, M, j, ++i);
         }
+
+
         if (second > 0)   backtracking(first + second, 0, third, mark, M, j, 0);
 
         if (third > 0) {
@@ -41,7 +43,7 @@ void backtracking(int first, int second, int third, int mark[], int M, int j, in
 
         if (first > 0) backtracking(0, second + first, third, mark, M, 0, i);
     } 
-       
+    
        
    }
  
@@ -56,10 +58,10 @@ void main() {
 
     const int M = 4;
     int mark[M];
-    mark[0] = 13;
-    mark[1] = 37;
-    mark[2] = 71;
-    mark[3] = 100;
+    mark[0] = 4;
+    mark[1] = 44;
+    mark[2] = 55;
+    mark[3] = 95;
    /* const int M = 2;
  int mark[M];
  mark[0] = 1;
